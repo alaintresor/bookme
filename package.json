@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Make company global travel and accommodation easy and convenient for the strong workforce of savvy members of staff, by leveraging the modern web.",
   "main": "src/index.js",
+  "type":"module",
   "scripts": {
     "start": "cross-env NODE_ENV=production node --exec babel-node ./src/index.js",
     "start:prod": "cross-env NODE_ENV=production nodemon --exec babel-node ./src/index.js",
