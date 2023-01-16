@@ -1,6 +1,7 @@
 import db from '../database/models/index.js';
 const Room = db['Room'];
 const Accomodation = db['accomodation'];
+import { fileUpload } from '../helpers/multer';
 
 export const createRoom = async (req, res) => {
   try {

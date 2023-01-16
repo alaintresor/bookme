@@ -9,9 +9,9 @@ const heroku = process.env.DB_CONNECT;
 const options = {
   openapi: '3.0.1',
   info: {
-    title: 'Barefoot Nomad API Documentation',
+    title: 'BookMe API Documentation',
     version: '1.0.0',
-    description: 'This is the backend api for Barefoot Nomad project.',
+    description: 'This is the backend api for BookMe project.',
   },
   host: process.env.NODE_ENV === 'production' ? heroku : local,
   basePath: '/api',

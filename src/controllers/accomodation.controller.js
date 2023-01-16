@@ -49,7 +49,7 @@ export const createAccomodation = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log(error.message)
+    console.log("error:",error)
     return res.status(500).json(error.message);
   }
 };
