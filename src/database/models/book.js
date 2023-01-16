@@ -22,7 +22,7 @@ export default (sequelize, DataTypes) => {
     Book.init(
         {
             userId: DataTypes.INTEGER,
-            roomId: DataTypes.INTEGER,
+            roomType: DataTypes.STRING,
             accomodationId: DataTypes.INTEGER,
             roomNumber: DataTypes.STRING,
             dayNumber: DataTypes.STRING,

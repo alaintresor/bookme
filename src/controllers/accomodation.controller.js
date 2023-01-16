@@ -20,7 +20,6 @@ export const createAccomodation = async (req, res) => {
       req.body;
     let amenitiesList =
       req.body.amenitiesList.length < 1 ? '[]' : req.body.amenitiesList;
-console.log(req.body)
     try {
       JSON.parse(amenitiesList);
     } catch (e) {
@@ -50,6 +49,7 @@ console.log(req.body)
       });
     }
   } catch (error) {
+    console.log(error.message)
     return res.status(500).json(error.message);
   }
 };
@@ -157,7 +157,7 @@ export const getSingleAccomodation = async (req, res) => {
       status: 'error',
       message: 'error while getting Accomodation',
     });
-    console.error(err);
+    console.error(err.message);
   }
 };
 

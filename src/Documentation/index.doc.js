@@ -698,9 +698,9 @@ const options = {
             type: 'string',
             description: "accomodation's id",
           },
-          roomId: {
+          roomType: {
             type: 'string',
-            description: "room's id",
+            description: "room's type",
           },
           dayNumber: {
             type: 'string',

@@ -15,8 +15,9 @@ export async function up(queryInterface, DataTypes) {
         accomodationId: {
             type: DataTypes.INTEGER,
         },
-        roomId: {
-            type: DataTypes.INTEGER,
+        roomType: {
+            type: DataTypes.STRING,
+            allowNull:false
         },
         roomNumber: {
             type: DataTypes.BOOLEAN,

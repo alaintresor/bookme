@@ -6,7 +6,7 @@ const Book=db['Book']
 export const booking = async (req, res) => {
   try {
     const userId=req.user.dataValues.id
-    const { accomodationId, roomId,date, roomNumber,comment,dayNumber } = req.body;
+    const { accomodationId, roomType,date, roomNumber,comment,dayNumber } = req.body;
     /**
      * check if accomodation is there
      */
@@ -33,7 +33,7 @@ export const booking = async (req, res) => {
 
     const newBooking = await Book.create({
         userId,
-        roomId,
+        roomType,
         accomodationId,
         roomNumber,
         dayNumber,
