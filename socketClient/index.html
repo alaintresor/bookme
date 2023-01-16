@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://cdn.socket.io/4.5.0/socket.io.min.js"
+      integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k"
+      crossorigin="anonymous"
+    ></script>
+    <title>Notifications with sockets</title>
+  </head>
+  <style>
+    body {
+      margin: 4rem auto;
+      width: 800px;
+    }
+
+    h1 {
+      margin-top: 5rem;
+    }
+  input {
+	margin:15px 0;
+	padding:15px 10px;
+	width:100%;
+	outline:none;
+	border:1px solid #bbb;
+	border-radius:20px;
+	display:inline-block;
+}
+
+input[type=text]:focus {
+	border-color:cornflowerblue;
+}
+
+button {
+  background-color: cornflowerblue;
+  color: white;
+	width: 40%;
+  border: none;
+  border-radius: 1rem;
+  height: 2.4rem;
+
+}
+
+button .btn:hover {
+	opacity:0.8;
+}
+
+button .btn:active {
+	opacity:0.4;
+}
+
+.display-wrapper {
+  text-align: center;
+  max-width: 80%;
+  margin: auto;
+  /* padding: 25px; */
+  border: 1px solid #fefefe;
+  border-radius: 5px;
+  /* background: #FFF; */
+}
+
+.notification {
+  margin-left: -5rem;
+  width: 32rem;
+  background-color: #f1f7ff;
+  display: flex;
+  align-items: center;
+  padding: 15px 5px;
+  border-radius: 5px;
+  border-width: 0px 0px 1px 0px;
+  border-style: solid;
+}
+
+.notification__par {
+  margin: .4rem 4.4rem;
+}
+
+.notification__close-link {
+  position: absolute;
+  right: 0;
+  padding: 0 15px;
+  color: #4C83FF;
+}
+    </style>
+    </head>
+  <body>
+    <form>
+      <label for="token">Your Token</label>
+      <input type="text" class="token" placeholder="paste your token here!" />
+      <button type="button" class="btn">connect</button>
+    </form>
+
+    <div>
+    <h1 class="not">notifications</h1>
+      <div class="display-wrapper">
+        <!-- Sample notification structure -->
+        <!-- <div class="notification">
+          <div class="notification__content-block">
+            <h4 class="notification__par">Trip request created!</h4>
+            <p class="notification__par">Hi there Patrick, your request have been created</p>
+          </div>
+        </div> -->
+
+      </div>
+      </div>
+    </div>
+  </body>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    let notifications;
+    document.querySelector('.btn').addEventListener('click', (e) => {
+      e.preventDefault();
+      const token = document.querySelector('.token').value;
+
+      const socket = io({
+        auth: {
+          token,
+        },
+      });
+      socket.on('newNotification', (info) => {
+        notifications = info;
+        console.log(notifications);
+    notifications.forEach(notification => {
+      notifData = `
+          <div class="notification__content-block">
+            <h4 class="notification__par">${notification.title}</h4>
+            <p class="notification__par">${notification.description}</p>
+        </div>
+      `;
+
+      let notifElement = document.createElement('div');
+      notifElement.classList.add('notification');
+      notifElement.innerHTML = notifData;
+      document.querySelector('.display-wrapper').appendChild(notifElement)
+    });
+      });
+    });
+  </script>
+</html>
