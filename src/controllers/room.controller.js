@@ -19,7 +19,7 @@ export const createRoom = async (req, res) => {
         'https://images.unsplash.com/photo-1553095066-5014bc7b7f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8d2FsbCUyMGJhY2tncm91bmR8ZW58MHx8MHx8&w=1000&q=80';
     }
     const accomodationId = req.params.accomodationId;
-    const { roomType, roomCost, image, roomDescription,availableRooms } = req.body;
+    const { roomType, roomCost, image,  availableRooms, children, adults } = req.body;
     /**
      * check if accomodation is there
      */
@@ -34,13 +34,22 @@ export const createRoom = async (req, res) => {
         message: 'No accomodation found with that ID',
       });
     }
+    let facilities =
+      req.body.facilities.length < 1 ? '[]' : req.body.facilities;
+    try {
+      JSON.parse(facilities);
+    } catch (e) {
+      facilities = JSON.stringify(facilities);
+    }
 
     const newRoom = await Room.create({
       roomType,
       roomCost,
-      roomDescription,
       availableRooms,
       accomodationId: accomodation.id,
+      children,
+      adults,
+      facilities: JSON.parse(facilities),
       image
     });
     return res.status(201).json({

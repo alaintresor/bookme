@@ -27,13 +27,15 @@ export default (sequelize, DataTypes) => {
     {
       roomType: DataTypes.STRING,
       roomCost: DataTypes.STRING,
-      roomDescription: DataTypes.STRING,
+      facilities: DataTypes.ARRAY(DataTypes.STRING),
       takenRooms: {
         type: DataTypes.STRING,
       },
+      adults: DataTypes.INTEGER,
+      children: DataTypes.INTEGER,
       availableRooms: {
         type: DataTypes.INTEGER,
-        allowNull:false
+        allowNull: false
       },
       userId: DataTypes.INTEGER,
       accomodationId: {

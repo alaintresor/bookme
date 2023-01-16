@@ -733,15 +733,28 @@ const options = {
             in: 'formData',
             type: 'string',
           },
-          roomDescription: {
-            name: 'roomDescription',
-            in: 'formData',
-            type: 'string',
-          },
           availableRooms: {
             name: 'availableRooms',
             in: 'formData',
             type: 'string',
+          },
+          children: {
+            name: 'children',
+            in: 'formData',
+            type: 'string',
+          },
+          adults: {
+            name: 'children',
+            in: 'formData',
+            type: 'string',
+          },
+          facilities: {
+            name: 'facilities',
+            in: 'formData',
+            type: 'array',
+            items: {
+              type: 'string',
+            },
           },
           image: {
             name: 'image',

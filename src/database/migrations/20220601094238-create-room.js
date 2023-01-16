@@ -7,11 +7,6 @@ export async function up(queryInterface, DataTypes) {
       primaryKey: true,
       type: DataTypes.INTEGER,
     },
-    uuid: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
-    },
-    
     accomodationId: {
       type: DataTypes.INTEGER,
     },
@@ -24,9 +19,6 @@ export async function up(queryInterface, DataTypes) {
     roomCost: {
       type: DataTypes.INTEGER,
     },
-    roomDescription: {
-      type: DataTypes.STRING,
-    },
     takenRooms: {
       type: DataTypes.INTEGER,
     },
@@ -35,6 +27,18 @@ export async function up(queryInterface, DataTypes) {
       type: DataTypes.STRING,
     },
     availableRooms: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+    },
+    facilities: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      defaultValue: [],
+    },
+    adults: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+    },
+    children: {
       allowNull: false,
       type: DataTypes.INTEGER,
     },
