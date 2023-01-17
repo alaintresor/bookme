@@ -1,12 +1,13 @@
 import db from '../database/models/index.js';
 const Room = db['Room'];
 const Accomodation = db['accomodation'];
-const Book=db['Book']
+const Event = db['events'];
+const Book = db['Book']
 
 export const booking = async (req, res) => {
   try {
-    const userId=req.user.dataValues.id
-    const { accomodationId, roomType,date, roomNumber,comment,dayNumber } = req.body;
+    const userId = req.user.dataValues.id
+    const { accomodationId, roomType, date, roomNumber, comment, dayNumber, eventId } = req.body;
     /**
      * check if accomodation is there
      */
@@ -16,6 +17,9 @@ export const booking = async (req, res) => {
     });
     const room = await Accomodation.findOne({
       where: { id: accomodationId },
+    });
+    const event = await Event.findOne({
+      where: { id: eventId },
     });
 
     if (!accomodation) {
@@ -30,15 +34,22 @@ export const booking = async (req, res) => {
         message: 'No room found with that ID',
       });
     }
+    if (!event) {
+      return res.status(404).json({
+        status: 'fail',
+        message: 'No event found with that ID',
+      });
+    }
 
     const newBooking = await Book.create({
-        userId,
-        roomType,
-        accomodationId,
-        roomNumber,
-        dayNumber,
-        date,
-        comment:comment??""
+      userId,
+      roomType,
+      accomodationId,
+      eventId,
+      roomNumber,
+      dayNumber,
+      date,
+      comment: comment ?? ""
     });
     return res.status(201).json({
       status: 'success',

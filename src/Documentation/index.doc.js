@@ -597,6 +597,41 @@ const options = {
         },
       },
     },
+    '/api/v1/event': {
+      post: {
+        tags: ['Event'],
+        summary: 'create event',
+        // description:
+        //   'You have to create a room according to the facility you have where you use accomodation id',
+        requestBody: {
+          content: {
+            'application/json': {
+              schema: {
+                $ref: '#/components/schemas/event',
+              },
+            },
+          },
+          required: true,
+        },
+
+        responses: {
+          200: {
+            description: 'Event was successfully created',
+          },
+        },
+      },
+      get: {
+        tags: ['Event'],
+        summary: 'Fetch all event',
+        parameters: [
+        ],
+        responses: {
+          200: {
+            description: 'events received successfully',
+          },
+        },
+      },
+    },
   },
   components: {
     schemas: {
@@ -698,6 +733,10 @@ const options = {
             type: 'string',
             description: "accomodation's id",
           },
+          eventId: {
+            type: 'string',
+            description: "event's id",
+          },
           roomType: {
             type: 'string',
             description: "room's type",
@@ -717,6 +756,32 @@ const options = {
           comment: {
             type: 'string',
             description: "any comment",
+          },
+        },
+      },
+      event: {
+        type: 'object',
+
+        properties: {
+          name: {
+            type: 'string',
+            description: "event's name",
+          },
+          date: {
+            type: 'string',
+            description: "event's date",
+          },
+          time: {
+            type: 'string',
+            description: "time's event",
+          },
+          location: {
+            type: 'string',
+            description: "location of event",
+          },
+          hoster: {
+            type: 'string',
+            description: "event hoster name ",
           },
         },
       },

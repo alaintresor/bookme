@@ -1,10 +1,8 @@
 import express from 'express';
-import { searchTrip } from '../../controllers/search.controllers.js';
-
-import { protect } from '../../controllers/authentication';
+import { Search } from '../../controllers/searchController';
 
 const router = express.Router();
 
-router.get('/:searchTerm', protect, searchTrip);
+router.get('/',  Search);
 
 export default router;

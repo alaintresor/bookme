@@ -19,6 +19,10 @@ export async function up(queryInterface, DataTypes) {
             type: DataTypes.STRING,
             allowNull:false
         },
+        eventId:{
+            type: DataTypes.INTEGER,
+            allowNull:false
+        },
         roomNumber: {
             type: DataTypes.BOOLEAN,
             defaultValue: false,
