@@ -632,6 +632,29 @@ const options = {
         },
       },
     },
+    '/api/v1/search':{
+      post: {
+        tags: ['Search'],
+        summary: 'Search accomodations',
+        parameters: [
+        ],
+        requestBody: {
+          content: {
+            'application/json': {
+              schema: {
+                $ref: '#/components/schemas/search',
+              },
+            },
+          },
+          required: true,
+        },
+        responses: {
+          200: {
+            description: 'accomodations received successfully',
+          },
+        },
+      },
+    }
   },
   components: {
     schemas: {
@@ -758,6 +781,28 @@ const options = {
             description: "any comment",
           },
         },
+      },
+      search: {
+        type: 'object',
+
+        properties: {
+          location: {
+            type: 'string',
+            description: "accomodation's location",
+          },
+          children: {
+            type: 'string',
+            description: "number of childer in room",
+          },
+          adults: {
+            type: 'string',
+            description: "number of adults in room",
+          },
+          roomsNber: {
+            type: 'string',
+            description: "number of available rooms",
+          },
+        }
       },
       event: {
         type: 'object',
