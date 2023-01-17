@@ -11,6 +11,18 @@ export async function up(queryInterface, DataTypes) {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
         },
+        fname: DataTypes.STRING,
+        lname: DataTypes.STRING,
+        email: DataTypes.STRING,
+        title: DataTypes.STRING,
+        country: DataTypes.STRING,
+        phone: DataTypes.STRING,
+        WhoBookFor: DataTypes.STRING,
+        purpose: DataTypes.STRING,
+        promotionCode: DataTypes.STRING,
+        question: DataTypes.STRING,
+        arriveTime: DataTypes.STRING,
+        arriveDate: DataTypes.STRING,
         userId: { type: DataTypes.INTEGER, },
         accomodationId: {
             type: DataTypes.INTEGER,
@@ -39,11 +51,7 @@ export async function up(queryInterface, DataTypes) {
         comment: {
             allowNull: true,
             type: DataTypes.STRING,
-        },        
-        date: {
-            allowNull: false,
-            type: DataTypes.STRING,
-        },        
+        },       
         createdAt: {
             allowNull: false,
             type: DataTypes.DATE,

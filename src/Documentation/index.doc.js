@@ -752,9 +752,57 @@ const options = {
         type: 'object',
 
         properties: {
+          fname:  {
+            type: 'string',
+            
+          },
+          lname:  {
+            type: 'string',
+            
+          },
+        email:  {
+            type: 'string',
+            
+          },
+        title:  {
+            type: 'string',
+            
+          },
+        country:  {
+            type: 'string',
+            
+          },
+        phone:  {
+            type: 'string',
+            
+          },
+        WhoBookFor:  {
+            type: 'string',
+            
+          },
+        purpose:  {
+            type: 'string',
+            
+          },
+        promotionCode:  {
+            type: 'string',
+            
+          },
+        question:  {
+            type: 'string',
+            
+          },
+        arriveTime:  {
+            type: 'string',
+            
+          },
+        arriveDate:  {
+            type: 'string',
+            
+          },
           accomodationId: {
             type: 'string',
-            description: "accomodation's id",
+            
           },
           eventId: {
             type: 'string',
@@ -771,10 +819,6 @@ const options = {
           roomNumber: {
             type: 'string',
             description: "Number of room ",
-          },
-          date: {
-            type: 'string',
-            description: "Coming in date",
           },
           comment: {
             type: 'string',

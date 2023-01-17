@@ -1,13 +1,25 @@
 import db from '../database/models/index.js';
+import EmailBooking from '../utils/emailBooking.js';
 const Room = db['Room'];
 const Accomodation = db['accomodation'];
 const Event = db['events'];
-const Book = db['Book']
+const Book = db['book']
 
 export const booking = async (req, res) => {
   try {
-    const userId = req.user.dataValues.id
-    const { accomodationId, roomType, date, roomNumber, comment, dayNumber, eventId } = req.body;
+
+    const { accomodationId, roomType, roomNumber, comment, dayNumber, eventId, fname,
+      lname,
+      email,
+      title,
+      country,
+      phone,
+      WhoBookFor,
+      purpose,
+      promotionCode,
+      question,
+      arriveTime,
+      arriveDate, } = req.body;
     /**
      * check if accomodation is there
      */
@@ -42,15 +54,30 @@ export const booking = async (req, res) => {
     }
 
     const newBooking = await Book.create({
-      userId,
+      fname,
+      lname,
+      email,
+      title,
+      country,
+      phone,
+      WhoBookFor,
+      purpose,
+      promotionCode,
+      question,
+      arriveTime,
+      arriveDate,
       roomType,
       accomodationId,
       eventId,
       roomNumber,
       dayNumber,
-      date,
       comment: comment ?? ""
     });
+    try {
+      await new EmailBooking(newBooking.dataValues,accomodation.name).booking()
+    } catch (err) {
+      console.log(err);
+    }
     return res.status(201).json({
       status: 'success',
       data: {
