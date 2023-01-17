@@ -632,7 +632,7 @@ const options = {
         },
       },
     },
-    '/api/v1/search':{
+    '/api/v1/search': {
       post: {
         tags: ['Search'],
         summary: 'Search accomodations',
@@ -752,57 +752,48 @@ const options = {
         type: 'object',
 
         properties: {
-          fname:  {
+          fname: {
             type: 'string',
-            
           },
-          lname:  {
+          lname: {
             type: 'string',
-            
           },
-        email:  {
+          email: {
             type: 'string',
-            
           },
-        title:  {
+          title: {
             type: 'string',
-            
           },
-        country:  {
+          country: {
             type: 'string',
-            
           },
-        phone:  {
+          phone: {
             type: 'string',
-            
           },
-        WhoBookFor:  {
+          bookingForName: {
             type: 'string',
-            
           },
-        purpose:  {
+          bookingForEmail: {
             type: 'string',
-            
           },
-        promotionCode:  {
+          purpose: {
             type: 'string',
-            
+
           },
-        question:  {
+          promotionCode: {
             type: 'string',
-            
           },
-        arriveTime:  {
+          question: {
             type: 'string',
-            
           },
-        arriveDate:  {
+          arriveTime: {
             type: 'string',
-            
+          },
+          arriveDate: {
+            type: 'string',
           },
           accomodationId: {
             type: 'string',
-            
           },
           eventId: {
             type: 'string',
@@ -820,9 +811,8 @@ const options = {
             type: 'string',
             description: "Number of room ",
           },
-          comment: {
+          paymentMethod: {
             type: 'string',
-            description: "any comment",
           },
         },
       },

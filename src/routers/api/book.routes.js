@@ -5,7 +5,7 @@ const router = express.Router();
 
 
 router.get('/',protect, getAllBookings);
-router.post('/', protect,booking);
+router.post('/',booking);
 // router.put('/:id', protect, uploads.single('image'), updateAccomodation);
 // router.delete('/:id', protect, deleteAccomodation);
 router.get('/:id',protect, getSingleBooking);

@@ -17,7 +17,8 @@ export async function up(queryInterface, DataTypes) {
         title: DataTypes.STRING,
         country: DataTypes.STRING,
         phone: DataTypes.STRING,
-        WhoBookFor: DataTypes.STRING,
+        bookingForName: DataTypes.STRING,
+        bookingForEmail: DataTypes.STRING,
         purpose: DataTypes.STRING,
         promotionCode: DataTypes.STRING,
         question: DataTypes.STRING,
@@ -29,14 +30,14 @@ export async function up(queryInterface, DataTypes) {
         },
         roomType: {
             type: DataTypes.STRING,
-            allowNull:false
+            allowNull: false
         },
-        eventId:{
+        eventId: {
             type: DataTypes.INTEGER,
-            allowNull:false
+            allowNull: false
         },
         roomNumber: {
-            type: DataTypes.BOOLEAN,
+            type: DataTypes.STRING,
             defaultValue: false,
         },
         dayNumber: {
@@ -48,10 +49,7 @@ export async function up(queryInterface, DataTypes) {
             type: DataTypes.STRING,
             defaultValue: 'pending',
         },
-        comment: {
-            allowNull: true,
-            type: DataTypes.STRING,
-        },       
+        paymentMethod: DataTypes.STRING,
         createdAt: {
             allowNull: false,
             type: DataTypes.DATE,
