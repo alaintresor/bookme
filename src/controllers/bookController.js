@@ -1,6 +1,5 @@
 import db from '../database/models/index.js';
 import EmailBooking from '../utils/emailBooking.js';
-const Room = db['Room'];
 const Accomodation = db['accomodation'];
 const Event = db['events'];
 const Book = db['book']
@@ -8,18 +7,21 @@ const Book = db['book']
 export const booking = async (req, res) => {
   try {
 
-    const { accomodationId, roomType, roomNumber, comment, dayNumber, eventId, fname,
+    const { accomodationId, roomType, roomNumber, dayNumber, eventId, fname,
       lname,
       email,
       title,
       country,
       phone,
-      WhoBookFor,
+      bookingForName,
+      bookingForEmail,
       purpose,
       promotionCode,
       question,
       arriveTime,
-      arriveDate, } = req.body;
+      arriveDate,
+      paymentMethod
+    } = req.body;
     /**
      * check if accomodation is there
      */
@@ -60,7 +62,8 @@ export const booking = async (req, res) => {
       title,
       country,
       phone,
-      WhoBookFor,
+      bookingForName,
+      bookingForEmail,
       purpose,
       promotionCode,
       question,
@@ -71,10 +74,10 @@ export const booking = async (req, res) => {
       eventId,
       roomNumber,
       dayNumber,
-      comment: comment ?? ""
+      paymentMethod
     });
     try {
-      await new EmailBooking(newBooking.dataValues,accomodation.name).booking()
+      await new EmailBooking(newBooking.dataValues, accomodation.name).booking()
     } catch (err) {
       console.log(err);
     }

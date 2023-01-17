@@ -28,7 +28,8 @@ export default (sequelize, DataTypes) => {
             title: DataTypes.STRING,
             country: DataTypes.STRING,
             phone: DataTypes.STRING,
-            WhoBookFor: DataTypes.STRING,
+            bookingForName: DataTypes.STRING,
+            bookingForEmail: DataTypes.STRING,
             purpose: DataTypes.STRING,
             promotionCode: DataTypes.STRING,
             question: DataTypes.STRING,
@@ -39,8 +40,8 @@ export default (sequelize, DataTypes) => {
             eventId: DataTypes.INTEGER,
             roomNumber: DataTypes.STRING,
             dayNumber: DataTypes.STRING,
+            paymentMethod: DataTypes.STRING,
             status: DataTypes.STRING,
-            comment: DataTypes.STRING
         },
         {
             sequelize,
