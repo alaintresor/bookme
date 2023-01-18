@@ -59,7 +59,7 @@ class EmailBooking {
     }
     async booking() {
         if (process.env.NODE_ENV !== 'test') {
-            await this.send('booking', 'Booking confirming');
+            await this.send('booking', 'booking confirmation');
         }
     }
 }

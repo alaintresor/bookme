@@ -20,7 +20,7 @@ export default (sequelize, DataTypes) => {
   accomodation.init(
     {
       name: DataTypes.STRING,
-      description: DataTypes.STRING,
+      description: DataTypes.TEXT,
       location: DataTypes.STRING,
       image: DataTypes.STRING,
       highlight: DataTypes.STRING,
