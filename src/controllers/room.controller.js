@@ -79,9 +79,9 @@ export const getAllRooms = async (req, res) => {
 
 export const getSingleRoom = async (req, res) => {
   try {
-    const id = req.params.id;
+    const {roomType,accomodationId} = req.body;
     const room = await Room.findOne({
-      where: { id },
+      where: { roomType,accomodationId },
       include: ['accomodation'],
     });
 

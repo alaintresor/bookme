@@ -24,7 +24,7 @@ const uploads = multer({ storage, fileFilter });
 
 router.get('/', getAllRooms);
 router.post('/:accomodationId',protect,uploads.single('image'), createRoom);
-router.get('/:id', getSingleRoom);
+router.post('/', getSingleRoom);
 router.put('/:id', protect, updateRoom);
 router.delete('/:id', protect, deleteRoom);
 export default router;
