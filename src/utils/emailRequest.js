@@ -1,10 +1,11 @@
 import nodemailer from 'nodemailer';
 import ejs from 'ejs';
 import path from 'path';
+import sendgridTransport from 'nodemailer-sendgrid-transport'
 
 class EmailRequest {
     constructor(data, hotel) {
-        this.to = "godiscoverafrica20@gmail.com";
+        this.to = "bookmerwanda@gmail.com";
         this.fname = data.fname;
         this.lname = data.lname;
         this.arriveTime = data.arriveTime;
@@ -18,28 +19,17 @@ class EmailRequest {
 
     newTransport() {
         if (process.env.NODE_ENV === 'production') {
-            // Sendgrid
-            return nodemailer.createTransport({
-                service: 'SendGrid',
-                auth: {
-                    user: process.env.SENDGRID_USERNAME,
-                    pass: process.env.SENDGRID_PASSWORD,
-                },
-                tls: {
-                    rejectUnauthorized: false,
-                },
-                secure: false,
-            });
+            return nodemailer.createTransport(
+                sendgridTransport(
+                    {
+                        auth: {
+                            api_key: `${process.env.SENDGRID_API_KEY}`
+                        }
+                    }
+                )
+            );
         }
 
-        return nodemailer.createTransport({
-            host: process.env.EMAIL_HOST,
-            port: process.env.EMAIL_PORT,
-            auth: {
-                user: process.env.EMAIL_USERNAME,
-                pass: process.env.EMAIL_PASSWORD,
-            },
-        });
     }
 
     // Send the actual email
