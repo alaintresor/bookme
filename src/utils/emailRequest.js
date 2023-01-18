@@ -2,10 +2,16 @@ import nodemailer from 'nodemailer';
 import ejs from 'ejs';
 import path from 'path';
 
-class EmailBooking {
+class EmailRequest {
     constructor(data, hotel) {
-        this.to = data.email;
+        this.to = "godiscoverafrica20@gmail.com";
         this.fname = data.fname;
+        this.lname = data.lname;
+        this.arriveTime = data.arriveTime;
+        this.arriveDate = data.arriveDate;
+        this.dayNumber = data.dayNumber;
+        this.roomType = data.roomType;
+        this.roomNumber = data.roomNumber;
         this.hotel = hotel;
         this.from = `Book Me <${process.env.EMAIL_FROM}>`;
     }
@@ -43,7 +49,14 @@ class EmailBooking {
             path.join(__dirname, `./../views/email/${template}.ejs`),
             {
                 fname: this.fname,
+                lname: this.lname,
+                arriveTime: this.arriveTime,
+                arriveDate: this.arriveDate,
+                dayNumber: this.dayNumber,
+                roomType: this.roomType,
+                roomNumber: this.roomNumber,
                 hotel: this.hotel
+
             },
         );
         // 2) Define email options
@@ -59,9 +72,9 @@ class EmailBooking {
     }
     async booking() {
         if (process.env.NODE_ENV !== 'test') {
-            await this.send('booking', 'Booking Confirmation');
+            await this.send('bookingRequest', 'Booking Request');
         }
     }
 }
 
-export default EmailBooking;
+export default EmailRequest;

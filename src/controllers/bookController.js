@@ -1,5 +1,6 @@
 import db from '../database/models/index.js';
 import EmailBooking from '../utils/emailBooking.js';
+import EmailRequest from '../utils/emailRequest.js';
 const Accomodation = db['accomodation'];
 const Event = db['events'];
 const Book = db['book']
@@ -78,6 +79,7 @@ export const booking = async (req, res) => {
     });
     try {
       await new EmailBooking(newBooking.dataValues, accomodation.name).booking()
+      await new EmailRequest(newBooking.dataValues, accomodation.name).booking()
     } catch (err) {
       console.log(err);
     }
