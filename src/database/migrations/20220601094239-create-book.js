@@ -7,10 +7,6 @@ export async function up(queryInterface, DataTypes) {
             primaryKey: true,
             type: DataTypes.INTEGER,
         },
-        uuid: {
-            type: DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV4,
-        },
         fname: DataTypes.STRING,
         lname: DataTypes.STRING,
         email: DataTypes.STRING,
@@ -20,11 +16,9 @@ export async function up(queryInterface, DataTypes) {
         bookingForName: DataTypes.STRING,
         bookingForEmail: DataTypes.STRING,
         purpose: DataTypes.STRING,
-        promotionCode: DataTypes.STRING,
         question: DataTypes.STRING,
         arriveTime: DataTypes.STRING,
         arriveDate: DataTypes.STRING,
-        userId: { type: DataTypes.INTEGER, },
         accomodationId: {
             type: DataTypes.INTEGER,
         },
@@ -34,7 +28,6 @@ export async function up(queryInterface, DataTypes) {
         },
         eventId: {
             type: DataTypes.INTEGER,
-            allowNull: false
         },
         roomNumber: {
             type: DataTypes.STRING,

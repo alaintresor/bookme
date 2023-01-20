@@ -654,6 +654,29 @@ const options = {
           },
         },
       },
+    },
+    '/api/v1/payment/pay': {
+      post: {
+        tags: ['Payment'],
+        summary: 'Saving Payment information',
+        parameters: [
+        ],
+        requestBody: {
+          content: {
+            'application/json': {
+              schema: {
+                $ref: '#/components/schemas/payment',
+              },
+            },
+          },
+          required: true,
+        },
+        responses: {
+          200: {
+            description: 'accomodations received successfully',
+          },
+        },
+      },
     }
   },
   components: {
@@ -780,9 +803,6 @@ const options = {
             type: 'string',
 
           },
-          promotionCode: {
-            type: 'string',
-          },
           question: {
             type: 'string',
           },
@@ -812,6 +832,33 @@ const options = {
             description: "Number of room ",
           },
           paymentMethod: {
+            type: 'string',
+          },
+        },
+      },
+      payment: {
+        type: 'object',
+
+        properties: {
+          roomId: {
+            type: 'string',
+          },
+          bookId: {
+            type: 'string',
+          },
+          orderNo: {
+            type: 'string',
+          },
+          email: {
+            type: 'string',
+          },
+          roomNumber: {
+            type: 'string',
+          },
+          amount: {
+            type: 'string',
+          },
+          status: {
             type: 'string',
           },
         },

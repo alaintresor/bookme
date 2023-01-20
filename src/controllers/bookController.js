@@ -2,7 +2,6 @@ import db from '../database/models/index.js';
 import EmailBooking from '../utils/emailBooking.js';
 import EmailRequest from '../utils/emailRequest.js';
 const Accomodation = db['accomodation'];
-const Event = db['events'];
 const Book = db['book']
 
 export const booking = async (req, res) => {
@@ -17,7 +16,6 @@ export const booking = async (req, res) => {
       bookingForName,
       bookingForEmail,
       purpose,
-      promotionCode,
       question,
       arriveTime,
       arriveDate,
@@ -33,9 +31,9 @@ export const booking = async (req, res) => {
     const room = await Accomodation.findOne({
       where: { id: accomodationId },
     });
-    const event = await Event.findOne({
-      where: { id: eventId },
-    });
+    // const event = await Event.findOne({
+    //   where: { id: eventId },
+    // });
 
     if (!accomodation) {
       return res.status(404).json({
@@ -49,12 +47,12 @@ export const booking = async (req, res) => {
         message: 'No room found with that ID',
       });
     }
-    if (!event) {
-      return res.status(404).json({
-        status: 'fail',
-        message: 'No event found with that ID',
-      });
-    }
+    // if (!event) {
+    //   return res.status(404).json({
+    //     status: 'fail',
+    //     message: 'No event found with that ID',
+    //   });
+    // }
 
     const newBooking = await Book.create({
       fname,
@@ -66,7 +64,6 @@ export const booking = async (req, res) => {
       bookingForName,
       bookingForEmail,
       purpose,
-      promotionCode,
       question,
       arriveTime,
       arriveDate,
@@ -160,67 +157,4 @@ export const updateBookingStatus = async (req, res) => {
   }
 };
 
-// export const updateRoom = async (req, res) => {
-//   try {
-//     if (req.user.dataValues.role !== 'travel admin') {
-//       return res
-//         .status(403)
-//         .json({ status: 'fail', message: 'not traveler admin' });
-//     }
-//     const id = req.params.id;
-//     const { roomType, roomCost, roomDescription, taken } = req.body;
-//     const room = await Room.findOne({ where: { id } });
 
-//     if (!room) {
-//       return res.status(404).json({
-//         status: 'success',
-//         message: 'No room found with that ID',
-//       });
-//     }
-
-//     await Room.update(
-//       {
-//         roomType,
-//         roomCost,
-//         roomDescription,
-//         taken,
-//       },
-//       { where: { id } },
-//     );
-
-//     res.status(200).json({
-//       status: 'success',
-//       message: 'Room updated successfully',
-//     });
-//   } catch (err) {
-//     res.send(err);
-//   }
-// };
-
-// export const deleteRoom = async (req, res) => {
-//   try {
-//     if (req.user.dataValues.role !== 'travel admin') {
-//       return res
-//         .status(403)
-//         .json({ status: 'fail', message: 'not traveler admin' });
-//     }
-//     const id = req.params.id;
-//     const room = await Room.findOne({ where: { id } });
-
-//     if (!room) {
-//       return res.status(404).json({
-//         status: 'fail',
-//         message: 'No room found with that ID',
-//       });
-//     }
-
-//     await Room.destroy({ where: { id } });
-
-//     res.status(200).json({
-//       status: 'success',
-//       message: 'Room deleted successfully',
-//     });
-//   } catch (err) {
-//     res.send(err);
-//   }
-// };

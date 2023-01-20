@@ -2,20 +2,20 @@ import nodemailer from 'nodemailer';
 import ejs from 'ejs';
 import path from 'path';
 import sendgridTransport from 'nodemailer-sendgrid-transport'
-// bookmerwanda@gmail.com
-class EmailRequest {
-    constructor(data, hotel) {
-        this.to = "tresoralain35@gmail.com";
-        this.fname = data.fname;
-        this.lname = data.lname;
-        this.email = data.email;
-        this.phone = data.phone;
-        this.arriveTime = data.arriveTime;
-        this.arriveDate = data.arriveDate;
-        this.dayNumber = data.dayNumber;
-        this.roomType = data.roomType;
-        this.roomNumber = data.roomNumber;
-        this.hotel = hotel;
+
+class EmailReceipt {
+    constructor(data) {
+        this.to = data.email;
+        this.orderNo = data.orderNo;
+        this.name = data.name;
+        this.email = data.email
+        this.dateTime = data.dateTime
+        this.hotel = data.hotel
+        this.price - data.price
+        this.quantity = data.quantity
+        this.total = data.total
+        this.paymentMethod = data.paymentMethod
+        this.paid = data.paid
         this.from = `Book Me <${process.env.EMAIL_FROM}>`;
     }
 
@@ -40,17 +40,16 @@ class EmailRequest {
         const html = await ejs.renderFile(
             path.join(__dirname, `./../views/email/${template}.ejs`),
             {
-                fname: this.fname,
-                lname: this.lname,
-                arriveTime: this.arriveTime,
-                arriveDate: this.arriveDate,
-                dayNumber: this.dayNumber,
-                roomType: this.roomType,
-                roomNumber: this.roomNumber,
-                hotel: this.hotel,
-                phone: this.phone,
+                orderNo: this.orderNo,
+                name: this.name,
                 email: this.email,
-
+                dateTime: this.dateTime,
+                hotel: this.hotel,
+                price: this.price,
+                quantity: this.quantity,
+                total: this.total,
+                paymentMethod: this.paymentMethod,
+                paid: this.paid
             },
         );
         // 2) Define email options
@@ -64,11 +63,11 @@ class EmailRequest {
         // 3) Create a transport and send email
         await this.newTransport().sendMail(mailOptions);
     }
-    async booking() {
+    async paying() {
         if (process.env.NODE_ENV !== 'test') {
-            await this.send('bookingRequest', 'Booking Request');
+            await this.send('receipt', 'Booking Receipt');
         }
     }
 }
 
-export default EmailRequest;
+export default EmailReceipt;

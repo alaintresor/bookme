@@ -8,11 +8,8 @@ export default (sequelize, DataTypes) => {
          * The `models/index` file will call this method automatically.
          */
         static associate({ users, Room, accomodation, events }) {
-
-            this.belongsTo(users, { foreignKey: 'userId', as: 'user' });
             this.belongsTo(Room, { foreignKey: 'roomType', as: 'Room' });
             this.belongsTo(accomodation, { foreignKey: 'accomodationId', as: 'accomodation' });
-            this.belongsTo(events, { foreignKey: 'eventId', as: 'event' })
         }
         toJSON() {
             return {
@@ -31,7 +28,6 @@ export default (sequelize, DataTypes) => {
             bookingForName: DataTypes.STRING,
             bookingForEmail: DataTypes.STRING,
             purpose: DataTypes.STRING,
-            promotionCode: DataTypes.STRING,
             question: DataTypes.STRING,
             arriveTime: DataTypes.STRING,
             arriveDate: DataTypes.STRING,

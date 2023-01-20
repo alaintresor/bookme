@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #f6f6f6;
+            font-family: sans-serif;
+            -webkit-font-smoothing: antialiased;
+            font-size: 14px;
+            line-height: 1.4;
+            margin: 0;
+            padding: 0;
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        .content h3 {
+            text-align: center;
+            color: red;
+        }
+
+        table {
+            width: 100%;
+            text-align: center;
+            margin: 3rem 0;
+            border-collapse: separate;
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+
+        table th {
+            border-bottom: solid black 1px;
+            border-top: solid black 1px;
+            height: 2rem;
+        }
+
+        .total {
+            display: flex;
+            justify-content: flex-end;
+            font-size: 18px;
+        }
+
+        .detail h4 {
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <div class="header">
+            <center>
+                <img src="./image/IMG_1502.jpg" alt="" width="50">
+                <h2>
+                    BOOKING RECEIPT
+                </h2>
+            </center>
+        </div>
+        <hr>
+        <div class="content">
+            <h3><i>BookMe by GoDiscoverAfrica Ltd</i></h3>
+            <div class="title">
+                <p> <b>Order No.:</b>
+                    <%= orderNo %>
+                </p>
+                <p><b>Name:</b>
+                    <%= name %>
+                </p>
+                <p> <b>Email:</b>
+                    <%= email %>
+                </p>
+                <p><b>Date & Time:</b>
+                    <%= dateTime %>
+                </p>
+
+            </div>
+            <div class="body">
+                <center>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>
+                                    Hotel
+                                </th>
+                                <th>
+                                    Room Price
+                                </th>
+                                <th>
+                                    Quantity
+                                </th>
+                                <th>
+                                    Amount
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <%= hotel %>
+                                </td>
+                                <td>
+                                    <%= price %>
+                                </td>
+                                <td>
+                                    <%= quantity %>
+                                </td>
+                                <td>
+                                    <%= total %>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </center>
+                <div class="total">
+                    <b>Total Amount: <%= total %></b>
+                </div>
+                <div class="detail">
+                    <h4>Payment Details:</h4>
+                    <br>
+                    <p><b>Payment Method:</b>
+                        <%= paymentMethod %>
+                    </p>
+                    <p><b> Amount Paid:</b>
+                        <%= paid %>
+                    </p>
+                    <p><b> Date:</b>
+                        <%= dateTime %>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <h3><i>
+                    Thank You for booking with us!
+                </i></h3>
+            <br><br>
+            <b> Reach us at</b>
+            <br>
+            <p><b>Email:</b> <a href="mailto:bookmerwanda@gmail.com"> bookmerwanda@gmail.com</a> / <a
+                    href="mailto:godiscoverafrica20@gmail.com">godiscoverafrica20@gmail.com</a> .</p>
+
+            <p><b>Phone Number:</b><a href="tel:+250 791 349 744">+250 791 349 744</a> /<a
+                    href="tel:+250 781 325 077">+250 781 325 077</a> </p>
+
+        </div>
+        <footer>
+            <center>
+                <h4>Powed By GoDiscover Africa Ltd</h4>
+                <img src="" alt="">
+            </center>
+        </footer>
+    </div>
+</body>
+
+</html>
