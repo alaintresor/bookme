@@ -11,7 +11,7 @@ class EmailReceipt {
         this.email = data.email
         this.dateTime = data.dateTime
         this.hotel = data.hotel
-        this.price - data.price
+        this.price =data.price
         this.quantity = data.quantity
         this.total = data.total
         this.paymentMethod = data.paymentMethod

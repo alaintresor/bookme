@@ -80,11 +80,11 @@ export const getAllRooms = async (req, res) => {
 export const getSingleRoom = async (req, res) => {
   try {
     const {roomType,accomodationId} = req.body;
-    const room = await Room.findOne({
+    const room = await Room.findAndCountAll({
       where: { roomType,accomodationId },
       include: ['accomodation'],
     });
-
+    const finalRoom = room.rows.map((item) => item.dataValues);
     if (!room) {
       return res.status(404).json({
         status: 'success',
@@ -94,7 +94,7 @@ export const getSingleRoom = async (req, res) => {
     res.status(200).json({
       status: 'success',
       data: {
-        room,
+        room:finalRoom[0],
       },
     });
   } catch (err) {

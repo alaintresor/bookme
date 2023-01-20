@@ -5,7 +5,7 @@ import sendgridTransport from 'nodemailer-sendgrid-transport'
 // bookmerwanda@gmail.com
 class EmailRequest {
     constructor(data, hotel) {
-        this.to = "tresoralain35@gmail.com";
+        this.to = "bookmerwanda@gmail.com";
         this.fname = data.fname;
         this.lname = data.lname;
         this.email = data.email;
@@ -15,6 +15,7 @@ class EmailRequest {
         this.dayNumber = data.dayNumber;
         this.roomType = data.roomType;
         this.roomNumber = data.roomNumber;
+        this.price=data.price
         this.hotel = hotel;
         this.from = `Book Me <${process.env.EMAIL_FROM}>`;
     }

@@ -7,6 +7,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        .contentt h3 {
+            text-align: center;
+            color: red;
+        }
+
+        .table {
+            width: 100%;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .table th {
+            border-bottom: solid black 1px;
+            border-top: solid black 1px;
+            height: 2rem;
+        }
+
+        .total {
+            text-align: right;
+            font-size: 18px;
+        }
+
+        .detail h4 {
+            font-size: 18px;
+        }
+
+        img {
+            border: none;
+            -ms-interpolation-mode: bicubic;
+            max-width: 100%;
+        }
+
         body {
             background-color: #f6f6f6;
             font-family: sans-serif;
@@ -19,144 +51,300 @@
             -webkit-text-size-adjust: 100%;
         }
 
-        .content h3 {
-            text-align: center;
-            color: red;
-        }
-
         table {
-            width: 100%;
-            text-align: center;
-            margin: 3rem 0;
             border-collapse: separate;
             mso-table-lspace: 0pt;
             mso-table-rspace: 0pt;
+            width: 100%;
         }
 
-        table th {
-            border-bottom: solid black 1px;
-            border-top: solid black 1px;
-            height: 2rem;
+        table td {
+            font-family: sans-serif;
+            font-size: 14px;
+            vertical-align: top;
         }
 
-        .total {
-            display: flex;
-            justify-content: flex-end;
-            font-size: 18px;
+
+
+        .body {
+            background-color: #f6f6f6;
+            width: 100%;
         }
 
-        .detail h4 {
-            font-size: 18px;
+        .container {
+            display: block;
+            margin: 0 auto !important;
+            max-width: 580px;
+            padding: 10px;
+            width: 580px;
+        }
+
+        .content {
+            box-sizing: border-box;
+            display: block;
+            margin: 0 auto;
+            max-width: 580px;
+            padding: 10px;
+        }
+
+        .main {
+            background: #ffffff;
+            border-radius: 3px;
+            width: 100%;
+        }
+
+        .wrapper {
+            box-sizing: border-box;
+            padding: 20px;
+        }
+
+        .content-block {
+            padding-bottom: 10px;
+            padding-top: 10px;
+        }
+
+        .footer {
+            clear: both;
+            margin-top: 10px;
+            text-align: center;
+            width: 100%;
+        }
+        p {
+            font-family: sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            margin: 0;
+            margin-bottom: 15px;
+        }
+
+                a {
+            color: #3498db;
+            text-decoration: underline;
+        }
+        .powered-by a {
+            text-decoration: none;
+        }
+
+        @media only screen and (max-width: 620px) {
+            table.body h1 {
+                font-size: 28px !important;
+                margin-bottom: 10px !important;
+            }
+
+            table.body p,
+            table.body ul,
+            table.body ol,
+            table.body td,
+            table.body span,
+            table.body a {
+                font-size: 16px !important;
+            }
+
+            table.body .wrapper,
+            table.body .article {
+                padding: 10px !important;
+            }
+
+            table.body .content {
+                padding: 0 !important;
+            }
+
+           
+        }
+
+        @media all {
+            .ExternalClass {
+                width: 100%;
+            }
+
+            .ExternalClass,
+            .ExternalClass p,
+            .ExternalClass span,
+            .ExternalClass font,
+            .ExternalClass td,
+            .ExternalClass div {
+                line-height: 100%;
+            }
+
+            .apple-link a {
+                color: inherit !important;
+                font-family: inherit !important;
+                font-size: inherit !important;
+                font-weight: inherit !important;
+                line-height: inherit !important;
+                text-decoration: none !important;
+            }
+
+            #MessageViewBody a {
+                color: inherit;
+                text-decoration: none;
+                font-size: inherit;
+                font-family: inherit;
+                font-weight: inherit;
+                line-height: inherit;
+            }
+
+            .btn-primary table td:hover {
+                background-color: #34495e !important;
+            }
+
+            .btn-primary a:hover {
+                background-color: #34495e !important;
+                border-color: #34495e !important;
+            }
         }
     </style>
 </head>
 
-<body>
+<body class="">
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
+        <tr>
+            <td>&nbsp;</td>
+            <td class="container">
+                <div class="content">
 
-    <div>
-        <div class="header">
-            <center>
-                <img src="./image/IMG_1502.jpg" alt="" width="50">
-                <h2>
-                    BOOKING RECEIPT
-                </h2>
-            </center>
-        </div>
-        <hr>
-        <div class="content">
-            <h3><i>BookMe by GoDiscoverAfrica Ltd</i></h3>
-            <div class="title">
-                <p> <b>Order No.:</b>
-                    <%= orderNo %>
-                </p>
-                <p><b>Name:</b>
-                    <%= name %>
-                </p>
-                <p> <b>Email:</b>
-                    <%= email %>
-                </p>
-                <p><b>Date & Time:</b>
-                    <%= dateTime %>
-                </p>
+                    <!-- START CENTERED WHITE CONTAINER -->
+                    <table role="presentation" class="main">
 
-            </div>
-            <div class="body">
-                <center>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>
-                                    Hotel
-                                </th>
-                                <th>
-                                    Room Price
-                                </th>
-                                <th>
-                                    Quantity
-                                </th>
-                                <th>
-                                    Amount
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <%= hotel %>
-                                </td>
-                                <td>
-                                    <%= price %>
-                                </td>
-                                <td>
-                                    <%= quantity %>
-                                </td>
-                                <td>
-                                    <%= total %>
-                                </td>
-                            </tr>
-                        </tbody>
+                        <!-- START MAIN CONTENT AREA -->
+                        <tr>
+                            <td class="wrapper">
+                                <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td>
+                                            <p>
+                                            <div class="header">
+                                                <center>
+                                                    <img src="https://www.bookme.rw/static/media/logo.990b396ad6ff1771c804.jpg"
+                                                        alt="" width="60">
+                                                    <h2>
+                                                        BOOKING RECEIPT
+                                                    </h2>
+                                                </center>
+                                            </div>
+                                            <hr>
+                                            <div class="contentt">
+                                                <h3><i>BookMe by GoDiscoverAfrica Ltd</i></h3>
+                                                <div class="title">
+                                                    <p> <b>Order No.:</b>
+                                                        <%= orderNo %>
+                                                    </p>
+                                                    <p><b>Name:</b>
+                                                        <%= name %>
+                                                    </p>
+                                                    <p> <b>Email:</b>
+                                                        <%= email %>
+                                                    </p>
+                                                    <p><b>Date & Time:</b>
+                                                        <%= dateTime %>
+                                                    </p>
+
+                                                </div>
+                                                <div>
+                                                    <center>
+                                                        <table class="table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>
+                                                                        Hotel
+                                                                    </th>
+                                                                    <th>
+                                                                        Room Price
+                                                                    </th>
+                                                                    <th>
+                                                                        Quantity
+                                                                    </th>
+                                                                    <th>
+                                                                        Amount
+                                                                    </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <%= hotel %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= price %> $
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= quantity %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= total %> $
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </center>
+                                                    <p class="total">
+                                                        <b>Total Amount: <%= total %> $</b>
+                                                    </p>
+                                                    <div class="detail">
+                                                        <h4>Payment Details:</h4>
+                                                        <p><b>Payment Method:</b>
+                                                            <%= paymentMethod %>
+                                                        </p>
+                                                        <p><b> Amount Paid:</b>
+                                                            <%= paid %> $
+                                                        </p>
+                                                        <p><b> Date:</b>
+                                                            <%= dateTime %>
+                                                        </p>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="end">
+                                                <br>
+                                                <h3><i>
+                                                        Thank You for booking with us!
+                                                    </i></h3>
+                                                <br>
+                                                <b> Reach us at</b>
+                                                <br>
+                                                <p><b>Email:</b> <a href="mailto:bookmerwanda@gmail.com">
+                                                        bookmerwanda@gmail.com</a> / <a
+                                                        href="mailto:godiscoverafrica20@gmail.com">godiscoverafrica20@gmail.com</a>
+                                                    .</p>
+
+                                                <p><b>Phone Number:</b><a href="tel:+250 791 349 744">+250 791 349
+                                                        744</a> /<a href="tel:+250 781 325 077">+250 781 325 077</a>
+                                                </p>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <!-- END MAIN CONTENT AREA -->
                     </table>
-                </center>
-                <div class="total">
-                    <b>Total Amount: <%= total %></b>
-                </div>
-                <div class="detail">
-                    <h4>Payment Details:</h4>
-                    <br>
-                    <p><b>Payment Method:</b>
-                        <%= paymentMethod %>
-                    </p>
-                    <p><b> Amount Paid:</b>
-                        <%= paid %>
-                    </p>
-                    <p><b> Date:</b>
-                        <%= dateTime %>
-                    </p>
+                    <!-- END CENTERED WHITE CONTAINER -->
 
-                </div>
-            </div>
-        </div>
-        <div class="footer">
-            <h3><i>
-                    Thank You for booking with us!
-                </i></h3>
-            <br><br>
-            <b> Reach us at</b>
-            <br>
-            <p><b>Email:</b> <a href="mailto:bookmerwanda@gmail.com"> bookmerwanda@gmail.com</a> / <a
-                    href="mailto:godiscoverafrica20@gmail.com">godiscoverafrica20@gmail.com</a> .</p>
+                    <!-- START FOOTER -->
+                    <div class="footer">
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0">
 
-            <p><b>Phone Number:</b><a href="tel:+250 791 349 744">+250 791 349 744</a> /<a
-                    href="tel:+250 781 325 077">+250 781 325 077</a> </p>
+                            <tr>
+                                <td class="content-block powered-by">
+                                    Powed By GoDiscover Africa Ltd
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="content-block">
+                                    <img src="https://ci3.googleusercontent.com/mail-img-att/AFCqZUS4kxKktQ1b9R7mhvwnSekBPBcGiDMknf8wIlmpCWMDW3og60zNyYBHVnTCgYF0yk_teGPiDkPNiK7tBADfw4i7RbKcgMr6eAeCgP_fKZnvwj4iitWGjTgAwmj6e7dgbFTHAttgr3I5gQeqD8NYr7vpkW9ujJ40O-hoF03siMLtOdID5fZ0a0KhI6xKeFnkP4yEm9XvqUpdJry5dsjftKclN6Gtcr-NhIfeJun-m67UjXIjGcKBEtYdEvW9q05YJ_oPWcBoIUj9BrDj066LQWglW5qNj7QArFYVT75FVLlwCxpecGLYAoNSt0hmCSkMt7GPo6cUjQNOH44Lz4qH_Rh2F0dNOzHyWxrNN1YYR6nboq04utx3kAtLEaUXJxdtYol22zqboVf64fThimdOv3SGae2wwZQWUL8boKGRCymM9fxT1icuWX77JmVgbiXhAuI46TloXp0vTYUINSOh_IAV0IqD0j9c5Ee4io0JVmaYHKwV4D0lpOCnTY-rmZ2jvk_o5gCTf7pyYadlghzn0NjcIJ5r6YJfSMHxrzFBBu30ARbIuqQpOCASXCkuaXGW-dwJvxsmJmUxnF0LxcL-zUsqksmsGxuxpyVuKPG8OAhYHhKtizb1fXfehnm1taFt6KJuqPBXfBvRRq-ebhaFDstwYB0RGmN3_xF0VbarklI9dKhollXtpHzaD39-yyr3LsgLhfWuUj1TOVcsRymj7sZIfQwm0mWhoSYQskQrEOaP4cl1k7MRo1of_xvCJicZ_zN7wRurrhOu1hGv48E0du5w0gBptseYFcug7GNMs99oNrgaPm2zxoEVFIXic4FW8G51VRvw9MJyD8MLFfOf0ecXFcWNqbi26LiQlPkSYF5EMwlhQcC8tHmwIOXDHXvHbQ2S852bDVi6sCJrT6TpNzNbCwmtIRkV140BYo5U9Yz29fCDzfElMAhKZJMhxsz1bQ=s0-l75-ft"
+                                        alt="" width="40">
 
-        </div>
-        <footer>
-            <center>
-                <h4>Powed By GoDiscover Africa Ltd</h4>
-                <img src="" alt="">
-            </center>
-        </footer>
-    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
 </body>
 
 </html>
