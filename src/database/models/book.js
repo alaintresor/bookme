@@ -10,7 +10,7 @@ export default (sequelize, DataTypes) => {
         static associate({ users, Room, accomodation, events }) {
 
             this.belongsTo(users, { foreignKey: 'userId', as: 'user' });
-            this.belongsTo(Room, { foreignKey: 'roomId', as: 'Room' });
+            this.belongsTo(Room, { foreignKey: 'roomType', as: 'Room' });
             this.belongsTo(accomodation, { foreignKey: 'accomodationId', as: 'accomodation' });
             this.belongsTo(events, { foreignKey: 'eventId', as: 'event' })
         }
