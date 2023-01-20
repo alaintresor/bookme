@@ -1,11 +1,12 @@
 import express from 'express';
 import { protect } from '../../controllers/authentication';
-import { booking, getAllBookings, getSingleBooking } from '../../controllers/bookController';
+import { booking, getAllBookings, getSingleBooking, updateBookingStatus } from '../../controllers/bookController';
 const router = express.Router();
 
 
-router.get('/',protect, getAllBookings);
+router.get('/', getAllBookings);
 router.post('/',booking);
+router.put('/update',updateBookingStatus);
 // router.put('/:id', protect, uploads.single('image'), updateAccomodation);
 // router.delete('/:id', protect, deleteAccomodation);
 router.get('/:id',protect, getSingleBooking);

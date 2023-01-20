@@ -131,6 +131,34 @@ export const getSingleBooking = async (req, res) => {
     res.send(err);
   }
 };
+export const updateBookingStatus = async (req, res) => {
+  try {
+    const { id, status } = req.body
+    const booking = await Book.findOne({
+      where: { id }
+    });
+
+    if (!booking) {
+      return res.status(404).json({
+        status: 'success',
+        message: 'No booking found with that ID',
+      });
+    }
+    await Book.update(
+      {
+        status
+      },
+      { where: { id } },
+    );
+
+    res.status(200).json({
+      status: 'success',
+      message: 'booking updated successfully',
+    });
+  } catch (err) {
+    res.send(err);
+  }
+};
 
 // export const updateRoom = async (req, res) => {
 //   try {
